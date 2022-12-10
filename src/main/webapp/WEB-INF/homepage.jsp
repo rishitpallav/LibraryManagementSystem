@@ -33,56 +33,35 @@
 
         <h2 style="color: aliceblue;">Hi, ${currentMember.firstName}</h2>
         <br><br><br>
-        <table class="table" style="display: block; margin: auto; width: 50%; text-align: center;">
-            <tr>
-                <td>
-                    <button style="font-size: large; width: 600px; color: aliceblue; background-color: #212025;"
-                        onclick="window.location.href='/UI/assignments.html'">VIEW ASSIGNMENTS</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;">EVENTS
-                        TODAY</button>
-                    <table class="table" style="background-color: lightgrey;">
-                        <tr>
-                            <td><a>TEAM MEETING - SOFTWARE ENGINEERING</a></td>
-                        </tr>
-                        <tr>
-                            <td><a>HW #5 - SOFTWARE ENGINEERING</a></td>
-                        </tr>
-                        <tr>
-                            <td><a>TEAM PROJECT - DATABASE ENGINEERING</a></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;"
-                        onclick="window.location.href='/UI/chats.html'">NEW MESSAGES</button>
-                    <table class="table" style="background-color: lightgrey;">
-                        <tr>
-                            <td><a>ROBERT - Don't forget to submit today's ...</a></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;"
-                        onclick="window.location.href='/UI/search_jobs.html'">JOBS</button>
-                </td>
-            </tr>
-        </table>
-        <div>
-            <footer style="position: absolute;bottom: 0;width: 100%;height: 2.5rem; background-color: #212025;">
-                <div style="color: aliceblue; text-align: center;">
-                    2022 Copyright:
-                    <a href="/" style="color: aliceblue;">Student Application</a>
+        <section
+            style="display: block; margin: auto; width: 50%; background-color: #212025; color: aliceblue; border-radius: 2%;">
+            <form style="display: block; padding: 2%;" action="/searchResults" method="POST">
+                <div class="form-group">
+                    <label for="document_title">DOCUMENT TITLE</label>
+                    <input type="String" class="form-control" name="document_title" id="document_title"
+                        placeholder="DATABASE">
                 </div>
-            </footer>
-        </div>
+                <div class="form-group">
+                    <label for="author_name">AUTHOR NAME</label>
+                    <input type="String" class="form-control" name="author_name" id="author_name"
+                        placeholder="RISHIT">
+                </div>
+                <div class="form-group">
+                    <!-- <label for="author_name">AUTHOR NAME</label>
+                    <input type="String" class="form-control" name="author_name" id="author_name" placeholder="DATABASE"> -->
+                    <label for="document_type">CHOOSE DOCUMENT TYPE:</label>
+                    <select style="color:black" id="document_type" name="document_type">
+                        <option value="all">ALL</option>
+                        <option value="book">BOOK</option>
+                        <option value="magazine">MAGAZINE</option>
+                        <option value="journal">JOURNAL</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submit" class="btn btn-primary">SEARCH</button>
+            </form>
+        </section>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 
