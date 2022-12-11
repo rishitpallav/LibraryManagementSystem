@@ -71,7 +71,7 @@
                     <c:forEach var="searchList" items="${searchList}">
                         <tr style="background-color: aliceblue;">
                             <td style="width: 40%; align-items: center;">
-                                <h3 style="color: #212025;"> <a href="/homepage/${searchList.id}">${searchList.title} </a></h3>
+                                <h3 style="color: #212025;"> ${searchList.title}</h3>
                             </td>
                             <td style="width: 30%; align-items: center;">
                                 <p>YEAR PUBLISHED - ${searchList.year}</p>
@@ -81,6 +81,7 @@
                             </td>
                         </tr>
                     </c:forEach>
+                    
                 </tbody>
             </table>
         </section>
