@@ -1,5 +1,7 @@
 package com.iit.respository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +17,9 @@ public interface LibrarianRepository extends JpaRepository<Librarian, Integer> {
 
 	@Query(value = "SELECT * FROM librarian WHERE email = ?1", nativeQuery = true)
 	public Librarian selectLibrarianByEmail(String email);
+	
+	@Query(value = "SELECT id FROM magazine_issue WHERE magazine_magazine_issue_fk = ?1", nativeQuery = true)
+	public List<Integer> selectMagazineIssueIdByMagazineId(Integer magazineId);
 
 	@Modifying
 	@Transactional
@@ -110,4 +115,24 @@ public interface LibrarianRepository extends JpaRepository<Librarian, Integer> {
 	@Transactional
 	@Query(value = "INSERT INTO copy(id, floor, is_borrowed, rack, room, document_copy_fk) VALUES(?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
 	public void insertIntoCopy(Integer copyId, Integer floor, Integer isBorrowed, String rack, String room, Integer documentId);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM magazine_issue_contributor WHERE magazine_issue_id = ?1", nativeQuery = true)
+	public void deleteMagazineIssueContributor(Integer magazineIssueId);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM magazine_issue_editor WHERE magazine_issue_id = ?1", nativeQuery = true)
+	public void deleteMagazineIssueEditor(Integer magazineIssueId);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM magazine_issue WHERE magazine_magazine_issue_fk = ?1", nativeQuery = true)
+	public void deleteMagazineIssue(Integer magazineId);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM magazine WHERE id = ?1", nativeQuery = true)
+	public void deleteMagazine(Integer magazineId);
 }

@@ -254,4 +254,22 @@ public class LibrarianController {
 		return mv;
 	}
 
+	@PostMapping("/deleteDocument")
+	public ModelAndView postDeleteDocument(@Param("document_type") String document_type,
+			@Param("inputId") Integer inputId) {
+		System.out.println(document_type + " " + inputId);
+		ModelAndView mv = new ModelAndView();
+		if(document_type.equals("magazine")) {
+			List<Integer> issueIds = librarianRepository.selectMagazineIssueIdByMagazineId(inputId);
+			for(int id : issueIds) {
+				librarianRepository.deleteMagazineIssueContributor(id);
+				librarianRepository.deleteMagazineIssueEditor(id);
+			}
+			librarianRepository.deleteMagazineIssue(inputId);
+			librarianRepository.deleteMagazine(inputId);
+		}
+		mv.setViewName("librarianHomepage");
+		return mv;
+	}
+
 }

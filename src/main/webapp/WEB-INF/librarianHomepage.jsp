@@ -36,12 +36,6 @@
         <table class="table" style="display: block; margin: auto; width: 50%; text-align: center;">
             <tr>
                 <td>
-                    <button style="font-size: large; width: 600px; color: aliceblue; background-color: #212025;"
-                        onclick="window.location.href='/UI/assignments.html'">VIEW ASSIGNMENTS</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;">ADD
                         DOCUMENT</button>
                     <table class="table" style="background-color: lightgrey;">
@@ -59,21 +53,31 @@
             </tr>
             <tr>
                 <td>
-                    <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;"
-                        onclick="window.location.href='/UI/chats.html'">NEW MESSAGES</button>
-                    <table class="table" style="background-color: lightgrey;">
-                        <tr>
-                            <td><a>ROBERT - Don't forget to submit today's ...</a></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+                    <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;" ">Delete Document</button>
+                    <table class=" table" style="background-color: lightgrey;">
             <tr>
                 <td>
-                    <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;"
-                        onclick="window.location.href='/UI/search_jobs.html'">JOBS</button>
+                    <form action="/deleteDocument" method="POST">
+                        <label for="document_type">CHOOSE DOCUMENT TYPE:</label>
+                        <select style="color:black; display: inline-block;" id="document_type" name="document_type">
+                            <option value="book">BOOK</option>
+                            <option value="magazine">MAGAZINE</option>
+                            <option value="journal">JOURNAL</option>
+                        </select>
+                        <input type="number" name="inputId" id="inputId" placeholder="2005">
+                        <input type="submit" name="submit" value="SUBMIT">
+                    </form>
                 </td>
             </tr>
+        </table>
+        </td>
+        </tr>
+        <tr>
+            <td>
+                <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;"
+                    onclick="window.location.href='/UI/search_jobs.html'">Modify Document</button>
+            </td>
+        </tr>
         </table>
         <div>
             <footer style="position: absolute;bottom: 0;width: 100%;height: 2.5rem; background-color: #212025;">
