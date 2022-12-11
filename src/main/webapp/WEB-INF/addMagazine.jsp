@@ -42,6 +42,23 @@
                     <label for="magazineName">Magazine Name</label>
                     <input type="text" class="form-control" name="magazineName" placeholder="Pinnacle Monthly">
                 </div>
+                </div>
+                <div class="form-group">
+                    <label for="copies">NO:OF COPIES AVILABLE</label>
+                    <input type="number" class="form-control" name="copies" id="copies" placeholder="2">
+                </div>
+                <div class="form-group">
+                    <label for="rack">Rack</label>
+                    <input type="text" class="form-control" name="rack" id="rack" placeholder="G">
+                </div>
+                <div class="form-group">
+                    <label for="floor">Floor</label>
+                    <input type="number" class="form-control" name="floor" id="floor" placeholder="1">
+                </div>
+                <div class="form-group">
+                    <label for="room">Room</label>
+                    <input type="text" class="form-control" name="room" id="room" placeholder="105">
+                </div>
                 <div class="form-group">
                     <label for="issueId">Issue ID</label>
                     <input type="text" class="form-control" name="issueId" placeholder="1,2,3">

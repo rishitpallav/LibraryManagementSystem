@@ -23,4 +23,14 @@ public interface BookRepository extends JpaRepository<Book, Integer>{
 	@Transactional
 	@Query(value = "INSERT INTO book_author (book_id, author_id) VALUES (?1, ?2)", nativeQuery = true)
 	public void insertBookAuthor(Integer id, Integer author_id);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "INSERT INTO document(id, category) VALUES(?1, ?2)", nativeQuery = true)
+	public void insertIntoDocument(Integer documentId, String category);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "INSERT INTO copy(id, floor, is_borrowed, rack, room, document_copy_fk) VALUES(?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
+	public void insertIntoCopy(Integer copyId, Integer floor, Integer isBorrowed, String rack, String room, Integer documentId);
 }

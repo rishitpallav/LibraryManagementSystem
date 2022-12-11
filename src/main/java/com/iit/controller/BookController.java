@@ -25,12 +25,17 @@ public class BookController {
 	}
 	@PostMapping("/addBook")
 	public ModelAndView postAddBook(@Param("book_id") int book_id, @Param("bookTitle") String bookTitle,@Param("copies") int copies,@Param("rack") String rack,
-			@Param("floor") int floor,@Param("room") int room,@Param("authorId") int authorId,@Param("publisherId") int publisherId,@Param("edition") int edition,@Param("year") int year) {
+			@Param("floor") int floor,@Param("room") String room,@Param("authorId") int authorId,@Param("publisherId") int publisherId,@Param("edition") int edition,@Param("year") int year) {
 		System.out.println(book_id+" "+bookTitle+" "+copies+" "+rack+" "+floor+" "+room+" "+authorId+" "+publisherId+" "+edition+" "+year);
 		ModelAndView mv = new ModelAndView();
 		bookRepository.insertBook(book_id, edition, bookTitle, year, publisherId);
 		bookRepository.insertBookAuthor(book_id, authorId);
-		mv.setViewName("addBook");
+		bookRepository.insertIntoDocument(book_id, "Book");
+		for(int i = 1 ; i <= copies; i++) {
+			Integer copyId = Integer.parseInt("" + book_id + i);
+			bookRepository.insertIntoCopy(copyId, floor, 0, rack, room, book_id);
+		}
+		mv.setViewName("librarianHomepage");
 		return mv;
 	}
 }

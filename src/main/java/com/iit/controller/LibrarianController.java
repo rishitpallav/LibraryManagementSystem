@@ -55,7 +55,6 @@ public class LibrarianController {
 		return mv;
 	}
 
-
 	@GetMapping("/addMagazine")
 	public ModelAndView addMagazine() {
 		ModelAndView mv = new ModelAndView();
@@ -124,7 +123,7 @@ public class LibrarianController {
 			@Param("lastName") String lastName, @Param("address") String address, @Param("email") String email) {
 		System.out.println(authorId + " " + firstName + " " + lastName + " " + address + " " + email);
 		ModelAndView mv = new ModelAndView();
-		librarianRepository.insertAuthor(authorId, firstName, lastName, address, email);
+		librarianRepository.insertAuthor(authorId, address, email, firstName, lastName);
 		mv.setViewName("librarianHomepage");
 		return mv;
 	}
@@ -180,13 +179,19 @@ public class LibrarianController {
 
 	@PostMapping("/addMagazine")
 	public ModelAndView postAddMagazine(@Param("magazineId") int magazineId, @Param("magazineName") String magazineName,
-			@Param("issueId") String issueId) {
+			@Param("issueId") String issueId, @Param("copies") int copies, @Param("rack") String rack,
+			@Param("floor") int floor, @Param("room") String room) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(magazineId + " " + magazineName + " " + issueId);
 		librarianRepository.insertMagazine(magazineId, magazineName);
 		List<String> issueIdList = Arrays.asList((issueId.split(",")));
 		for (String issueIdentity : issueIdList) {
 			librarianRepository.updateMagazineInMagazineIssue(magazineId, Integer.parseInt(issueIdentity));
+		}
+		librarianRepository.insertIntoDocument(magazineId, "Magazine");
+		for (int i = 1; i <= copies; i++) {
+			Integer copyId = Integer.parseInt("" + magazineId + i);
+			librarianRepository.insertIntoCopy(copyId, floor, 0, rack, room, magazineId);
 		}
 		mv.setViewName("librarianHomepage");
 		return mv;
@@ -231,13 +236,19 @@ public class LibrarianController {
 
 	@PostMapping("/addJournal")
 	public ModelAndView postAddJournal(@Param("journalId") int journalId, @Param("title") String title,
-			@Param("publisherId") int publisherId, @Param("issueId") String issueId) {
+			@Param("publisherId") int publisherId, @Param("issueId") String issueId, @Param("copies") int copies,
+			@Param("rack") String rack, @Param("floor") int floor, @Param("room") String room) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(journalId + " " + title + " " + publisherId + " " + issueId);
 		librarianRepository.insertJournal(journalId, title, publisherId);
 		List<String> issueIdList = Arrays.asList((issueId.split(",")));
 		for (String issueIdentity : issueIdList) {
 			librarianRepository.updateJournalInJournalIssue(journalId, Integer.parseInt(issueIdentity));
+		}
+		librarianRepository.insertIntoDocument(journalId, "Journal");
+		for (int i = 1; i <= copies; i++) {
+			Integer copyId = Integer.parseInt("" + journalId + i);
+			librarianRepository.insertIntoCopy(copyId, floor, 0, rack, room, journalId);
 		}
 		mv.setViewName("librarianHomepage");
 		return mv;

@@ -40,7 +40,8 @@
                 </div>
                 <div class="form-group">
                     <label for="bookTitle">BOOK TITLE</label>
-                    <input type="text" class="form-control" name="bookTitle" id="bookTitle" placeholder="INTRODUCTION TO ALGORITHMS">
+                    <input type="text" class="form-control" name="bookTitle" id="bookTitle"
+                        placeholder="INTRODUCTION TO ALGORITHMS">
                 </div>
                 <div class="form-group">
                     <label for="copies">NO:OF COPIES AVILABLE</label>
@@ -56,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label for="room">Room</label>
-                    <input type="number" class="form-control" name="room" id="room" placeholder="105">
+                    <input type="text" class="form-control" name="room" id="room" placeholder="105">
                 </div>
                 <div class="form-group">
                     <label for="authorId">AUTHOR ID</label>
