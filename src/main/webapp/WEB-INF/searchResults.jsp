@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<!DOCTYPE html>
     <html>
 
     <head>
@@ -36,7 +37,7 @@
                 <thead class="thead-dark">
                     <th>
                         <button style="font-size: large; width: 100%; color: aliceblue; background-color: #212025;"
-                            onclick="window.location.href='/UI/homepage.html'"><i class="bi bi-arrow-left-circle"></i>
+                            onclick="window.location.href='/homepage'"><i class="bi bi-arrow-left-circle"></i>
                             BACK</button>
                     </th>
                     <th>
@@ -69,14 +70,14 @@
                     </tr>
                     <c:forEach var="searchList" items="${searchList}">
                         <tr style="background-color: aliceblue;">
-                            <td style="width: 20%; align-items: center;">
-                                <h3 style="color: #212025;"> ${searchList.title} </h3>
+                            <td style="width: 40%; align-items: center;">
+                                <h3 style="color: #212025;"> <a href="/homepage/${searchList.id}">${searchList.title} </a></h3>
                             </td>
-                            <td style="width: 80%; align-items: center;">
-                                <p>${searchList.type}</p>
-                                <p>${searchList.year}</p>
-                                <p>${searchList.authors}</p>
-                                <p>${searchList.available}</p>
+                            <td style="width: 30%; align-items: center;">
+                                <p>YEAR PUBLISHED - ${searchList.year}</p>
+                            </td>
+                            <td style="width: 30%; align-items: center;">
+                                <p>EDITION - ${searchList.edition}</p>
                             </td>
                         </tr>
                     </c:forEach>
